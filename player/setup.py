@@ -14,7 +14,7 @@ setup(
         classifiers = [
             "Development Status :: Pre-Alpha",
             "Environment :: Web Environment",
-            "Framework :: Flask",
+            "Framework :: ffmpeg",
             "Intended Audience :: Internet People",
             "Operating System :: POSIX :: Linux",
             "Programming Language :: Python :: 3.6",
