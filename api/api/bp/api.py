@@ -24,6 +24,14 @@ def submit():
     playlist(song)
     return jsonify({"Added": song})
 
+@api.route('/next')
+def up_next():
+    """
+    provide a route to pop next song from queue.
+
+    """
+    return jsonify({"Next": playlist.pop() })
+
 @api.route('/stat')
 def stat():
     """
@@ -39,6 +47,15 @@ def queue():
 
     """
     return jsonify(list(playlist))
+
+@api.route('/clear')
+def clear():
+    """
+    provides a route to clear the queue
+
+    """
+    playlist.clear()
+    return jsonify({"Cleared": "playlist"})
 
 @api.teardown_app_request
 def app_request_teardown(error=None):
