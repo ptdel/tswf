@@ -35,15 +35,19 @@ package manager, or directly from upstream.
 
 for the `api` and `player` containers, you should be able to simply
 change into their directories, and run:
+
 ``` docker build -t <name> . ```
 
 the `nginx` container has two extra steps to build:
 
 generate a dhparams file with the following command
+
 ``` openssl dhparam -out dhparam.pem 4096 ```
+
 It's going to take a little bit.
 
 After it's done create a self-signed certificate and private key:
+
 ``` openssl req -newkey rsa:4096 -keyout cert.key -x509 -days 365 -out cert.pem -nodes ```
 
 Once you have these three things, the cert.key, cert.pem, and dhparams.pem, make a
@@ -57,6 +61,7 @@ after you've build all of the containers you can start them all
 up with:
 
 ``` docker-compose up -d```
+
 (You can leave off the `-d` if you want it to run in the tty.)
 
 If things worked as intended, you should see the player attempt
