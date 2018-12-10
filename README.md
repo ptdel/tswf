@@ -106,6 +106,6 @@ License
 
 Acknowledgements
 ----------------
-[verboten](https://www.github.com/d3d1drty/verboten) the IRC bot currently
+[verboten](https://www.github.com/d3d1rty/verboten) the IRC bot currently
 serving as the DJ for the live version running among friends. Written by
 [d3d1rty](https://www.github.com/d3d1rty)
