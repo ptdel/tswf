@@ -20,10 +20,10 @@ The API is simple, with more functionality on the way as time permits.
 
 ```
 /submit?song=<urlencoded song link>  <-  submit a song to the queue
-/stat			      	             <-  the length of the queue
-/queue				                 <-	 the queue
-/clear				                 <-  in case of emergencies
-/next				                 <-  used by player (and assholes)
+/stat			      	                      <-  the length of the queue
+/queue				                           <-	 the queue
+/clear				                           <-  in case of emergencies
+/next				                            <-  used by player (and assholes)
 ```
 
 Getting Started
