@@ -1,11 +1,11 @@
 from re import search
 from os import environ
 from twisted.internet import protocol, reactor
-from twisted.words.protocols import irc
+from twisted.words.protocols.irc import IRCClient
 from datetime import datetime
 from requests import get
 
-class Bot(irc.IRCClient):
+class Bot(IRCClient):
 
     nickname = environ['NICKNAME']
     password = environ['PASSWORD']
