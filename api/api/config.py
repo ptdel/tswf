@@ -1,4 +1,4 @@
-class Settings():
+class Settings:
 
-    DEBUG=True
-    TESTING=True
+    DEBUG = True
+    TESTING = True
