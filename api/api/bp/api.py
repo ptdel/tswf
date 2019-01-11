@@ -10,29 +10,32 @@ from flask import Blueprint, jsonify, request, g
 from queue import playlist
 from errors import InternalError
 
-api = Blueprint('api', __name__, url_prefix='/api')
+api = Blueprint("api", __name__, url_prefix="/api")
 
-@api.route('/submit')
+
+@api.route("/submit")
 def submit():
     """
     provides a route to submit song reqeusts
 
     """
-    if not 'song' in request.args:
+    if not "song" in request.args:
         raise InternalError
-    song = request.args.get('song')
+    song = request.args.get("song")
     playlist(song)
     return jsonify({"Added": song})
 
-@api.route('/next')
+
+@api.route("/next")
 def up_next():
     """
     provide a route to pop next song from queue.
 
     """
-    return jsonify({"Next": playlist.pop() })
+    return jsonify({"Next": playlist.pop()})
 
-@api.route('/stat')
+
+@api.route("/stat")
 def stat():
     """
     provides information about the song queue
@@ -40,7 +43,8 @@ def stat():
     """
     return jsonify({"QueueLen": len(playlist)})
 
-@api.route('/queue')
+
+@api.route("/queue")
 def queue():
     """
     provides the song queue as a dictionary
@@ -48,7 +52,8 @@ def queue():
     """
     return jsonify(list(playlist))
 
-@api.route('/clear')
+
+@api.route("/clear")
 def clear():
     """
     provides a route to clear the queue
@@ -56,6 +61,7 @@ def clear():
     """
     playlist.clear()
     return jsonify({"Cleared": "playlist"})
+
 
 @api.teardown_app_request
 def app_request_teardown(error=None):

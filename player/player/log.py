@@ -1,4 +1,4 @@
-class Logger():
+class Logger:
     def debug(self, msg):
         pass
 
