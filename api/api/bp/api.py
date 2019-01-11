@@ -9,6 +9,7 @@ utilized by the player container.
 from flask import Blueprint, jsonify, request, g
 from queue import playlist
 from errors import InternalError
+from skip import votetoskip
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
@@ -22,6 +23,7 @@ def submit():
         raise InternalError
     song = request.args.get('song')
     playlist(song)
+    
     return jsonify({"Added": song})
 
 @api.route('/next')
@@ -56,6 +58,26 @@ def clear():
     """
     playlist.clear()
     return jsonify({"Cleared": "playlist"})
+
+@api.route('/np')
+def np():
+    """
+    provides the currently playing song
+    
+    """
+    return jsonify({"NowPlaying": playlist.current()})
+    
+@api.route("/votetoskip")
+def skip():
+    """
+    votes by users to skip currently playing song
+    
+    """
+    if not 'username' in request.args:
+        raise InternalError
+    username = request.args.get('username')
+
+    return jsonify({"VoteToSkip": votetoskip(username)})
 
 @api.teardown_app_request
 def app_request_teardown(error=None):

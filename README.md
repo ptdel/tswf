@@ -24,6 +24,8 @@ The API is simple, with more functionality on the way as time permits.
 /queue                              <-	 the queue
 /clear                              <-  in case of emergencies
 /next                               <-  used by player (and assholes)
+/np                                 <-  currently playing song
+/skip?username=<username>           <-  Vote to skip song
 ```
 
 Getting Started
