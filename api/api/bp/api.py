@@ -64,7 +64,6 @@ def clear():
     playlist.clear()
     return jsonify({"Cleared": "playlist"})
 
-<<<<<<< HEAD
 @api.route('/np')
 def np():
     """
@@ -84,8 +83,6 @@ def skip():
     username = request.args.get('username')
 
     return jsonify({"VoteToSkip": votetoskip(username)})
-=======
->>>>>>> develop
 
 @api.teardown_app_request
 def app_request_teardown(error=None):
