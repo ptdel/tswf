@@ -12,3 +12,28 @@ class InternalError(HTTPException):
         super().__init__(description=description, response=response)
         self.msg = self.__class__.__name__
         self.code = 500
+
+class BadRequest(HTTPException):
+    
+    def __init__(self, description=None, response=None):
+        super().__init__(description=description, response=response)
+        self.msg = self.__class__.__name__
+        self.code = 400
+        
+class Unauthorized(HTTPException):
+
+    def __init__(self, description=None, response=None):
+        super().__init__(description=description, response=response)
+        self.msg = self.__class__.__name__
+        self.code = 403
+        
+class MethodNotAllowed(HTTPException):
+    """
+    Using for queue being empty but someone trying to effect it
+    like voting to skip on an empty queue
+    """
+    
+    def __init__(self, description=None, response=None):
+        super().__init__(description=description, response=response)
+        self.msg = self.__class__.__name__
+        self.code = 405

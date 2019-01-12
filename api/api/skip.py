@@ -1,6 +1,7 @@
 from queue import playlist
+from errors import Unauthorized, MethodNotAllowed
 
-class VoteToSkip(list):
+class Skip(list):
     def __init__(self):
         self.currentsong = playlist.current()
         self.votecount = 0
@@ -9,16 +10,17 @@ class VoteToSkip(list):
         if self.currentsong != playlist.current():
             self.currentsong = playlist.current()
             self.clear()
+            
         if username is not None:
             for x in self:
                 if x == username:
-                    return "vote already cast"
+                    raise Unauthorized
             self.append(username)
-            
             self.votecount += 1
-            if self.votecount >= 1:
+            
+            if self.votecount >= 4:
                 playlist.pop()
                 self.votecount = 0
                 self.clear()
             
-votetoskip = VoteToSkip()
+votetoskip = Skip()

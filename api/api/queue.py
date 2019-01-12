@@ -8,16 +8,11 @@ class PlayList(deque):
     def __call__(self, song=None):
         if song is not None:
             self.appendleft(song)
-<<<<<<< HEAD
             
     def current(self):
         if len(self) > 0:
             return self[0]
         else:
-            return "queue is empty"
+            return None
             
-=======
-
-
->>>>>>> develop
 playlist = PlayList()
