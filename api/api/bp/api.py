@@ -84,7 +84,6 @@ def skip():
         raise MethodNotAllowed
     username = request.args.get('username')
     votetoskip(username)
-    
     return jsonify({"Skip": "200"})
 
 @api.teardown_app_request
