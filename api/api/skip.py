@@ -1,4 +1,4 @@
-from queue import playlist
+from music_queue import playlist
 from errors import Unauthorized, MethodNotAllowed
 
 class Skip(list):

@@ -6,8 +6,10 @@ This blueprint provides routes for the song queue
 utilized by the player container.
 
 """
-from flask import Blueprint, jsonify, request, g
-from queue import playlist
+
+from flask import Blueprint, jsonify, request
+from requests import get, post
+from music_queue import playlist
 from errors import InternalError, BadRequest, MethodNotAllowed
 from skip import votetoskip
 
@@ -23,8 +25,13 @@ def submit():
     if not "song" in request.args:
         raise InternalError
     song = request.args.get("song")
-    playlist(song)
     
+    if len(playlist) > 0:
+        playlist(song)
+    else:
+        playlist(song)
+        submit = {'song': song}
+        get("http://127.0.0.1:8070/play", params=submit, verify=False, timeout=1)
     return jsonify({"Added": song})
 
 

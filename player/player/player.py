@@ -1,6 +1,8 @@
 import ffmpeg
 
 def stream_song(song):
+    print ("Starting")
+    print (song)
     return (
         ffmpeg.input(song, re=None)
         .output(
@@ -14,5 +16,3 @@ def stream_song(song):
         )
         .run()
     )
-
-stream = stream_song(None)
