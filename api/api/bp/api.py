@@ -41,8 +41,12 @@ def up_next():
     provide a route to pop next song from queue.
 
     """
-    return jsonify({"Next": playlist.pop()})
+    playlist.pop()
+    submit = {'song': playlist.current()}
+    get("http://127.0.0.1:8070/play", params=submit, verify=False, timeout=1)
+    return jsonify({"Next": "200"})
 
+#    return jsonify({"Next": playlist.pop()})
 
 @api.route("/stat")
 def stat():
@@ -85,13 +89,17 @@ def skip():
     votes by users to skip currently playing song
     
     """
-    if not 'username' in request.args:
-        raise BadRequest
-    if len(playlist) == 0:
-        raise MethodNotAllowed
-    username = request.args.get('username')
-    votetoskip(username)
-    return jsonify({"Skip": "200"})
+    playlist.pop()
+    submit = {'song': playlist.current()}
+    get("http://127.0.0.1:8070/play", params=submit, verify=False, timeout=1)
+    return jsonify({"Next": "200"})
+#    if not 'username' in request.args:
+#        raise BadRequest
+#    if len(playlist) == 0:
+#        raise MethodNotAllowed
+#    username = request.args.get('username')
+#    votetoskip(username)
+#    return jsonify({"Skip": "200"})
 
 @api.teardown_app_request
 def app_request_teardown(error=None):
