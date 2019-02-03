@@ -22,6 +22,6 @@ class Stream:
                     )
                     .run_async(pipe_stdout=True)
                 )
-        return process
+        return
         
 stream = Stream()
