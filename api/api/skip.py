@@ -18,7 +18,7 @@ class Skip(list):
             self.append(username)
             self.votecount += 1
             
-            if self.votecount >= 1:
+            if self.votecount >= 4:
                 self.status = True
                 
     def reset(self):
