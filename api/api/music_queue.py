@@ -1,6 +1,5 @@
 from collections import deque
 
-
 class PlayList(deque):
     def __init__(self, maxlen=None):
         super().__init__(maxlen=maxlen)
@@ -9,10 +8,6 @@ class PlayList(deque):
         if song is not None:
             self.appendleft(song)
             
-    def current(self):
-        if len(self) > 0:
-            return self[0]
-        else:
-            return None
+    current_song = None
             
 playlist = PlayList()

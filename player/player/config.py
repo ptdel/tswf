@@ -3,7 +3,7 @@ from hooks import download_hook
 
 ydl_opts = {
     "format": "bestaudio/best",
-    "outtmpl": "/home/matt/songs/%(title)s.%(ext)s",
+    "outtmpl": "/songs/%(title)s.%(ext)s",
     "postprocessors": [
         {
             "key": "FFmpegExtractAudio",

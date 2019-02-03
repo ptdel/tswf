@@ -8,13 +8,12 @@ utilized by the player container.
 """
 
 from flask import Blueprint, jsonify, request
-from requests import get, post
+from requests import get
 from music_queue import playlist
 from errors import InternalError, BadRequest, MethodNotAllowed
 from skip import votetoskip
 
 api = Blueprint("api", __name__, url_prefix="/api")
-
 
 @api.route("/submit")
 def submit():
@@ -25,15 +24,8 @@ def submit():
     if not "song" in request.args:
         raise InternalError
     song = request.args.get("song")
-    
-    if len(playlist) > 0:
-        playlist(song)
-    else:
-        playlist(song)
-        submit = {'song': song}
-        get("http://127.0.0.1:8070/play", params=submit, verify=False, timeout=1)
+    playlist(song)
     return jsonify({"Added": song})
-
 
 @api.route("/next")
 def up_next():
@@ -41,12 +33,9 @@ def up_next():
     provide a route to pop next song from queue.
 
     """
-    playlist.pop()
-    submit = {'song': playlist.current()}
-    get("http://127.0.0.1:8070/play", params=submit, verify=False, timeout=1)
-    return jsonify({"Next": "200"})
-
-#    return jsonify({"Next": playlist.pop()})
+    playlist.current_song = playlist[0]
+    votetoskip.reset()
+    return jsonify({"Next": playlist.pop()})
 
 @api.route("/stat")
 def stat():
@@ -81,25 +70,21 @@ def np():
     provides the currently playing song
     
     """
-    return jsonify({"NowPlaying": playlist.current()})
+    return jsonify({"Current": playlist.current_song})
     
 @api.route("/skip")
 def skip():
     """
     votes by users to skip currently playing song
     
-    """
-    playlist.pop()
-    submit = {'song': playlist.current()}
-    get("http://127.0.0.1:8070/play", params=submit, verify=False, timeout=1)
-    return jsonify({"Next": "200"})
-#    if not 'username' in request.args:
-#        raise BadRequest
-#    if len(playlist) == 0:
-#        raise MethodNotAllowed
-#    username = request.args.get('username')
-#    votetoskip(username)
-#    return jsonify({"Skip": "200"})
+    """   
+    if not 'username' in request.args:
+        return jsonify({"Skip": votetoskip.status})
+    if len(playlist) == 0:
+        raise MethodNotAllowed
+        
+    votetoskip(request.args.get('username'))
+    return jsonify({"Skip": "200"})
 
 @api.teardown_app_request
 def app_request_teardown(error=None):
