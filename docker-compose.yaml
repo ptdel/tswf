@@ -36,8 +36,6 @@ services:
     image: player:latest
     restart: always
     network_mode: "host"
-    ports:
-      - "8070:8070"
     volumes:
       - ~/songs:/songs
     deploy:
