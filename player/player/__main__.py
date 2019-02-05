@@ -11,7 +11,6 @@ app = Bottle()
 def restart():
     if stream.process != None:
         stream.process.terminate()
-        #stream.process = 1
 
 def playloop():
     if stream.process == None or stream.process.poll() != None:
@@ -30,4 +29,3 @@ if __name__ == "__main__":
     player.start()
     run(app, host='localhost', port=8070)
     player.join()
-    
