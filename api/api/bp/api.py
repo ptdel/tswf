@@ -1,12 +1,10 @@
 """
 API
 ---
-
 This blueprint provides routes for the song queue
 utilized by the player container.
 
 """
-
 from flask import Blueprint, jsonify, request
 from requests import get
 from music_queue import playlist
@@ -45,7 +43,6 @@ def stat():
     """
     return jsonify({"QueueLen": len(playlist)})
 
-
 @api.route("/queue")
 def queue():
     """
@@ -53,7 +50,6 @@ def queue():
 
     """
     return jsonify(list(playlist))
-
 
 @api.route("/clear")
 def clear():
@@ -64,7 +60,7 @@ def clear():
     playlist.clear()
     return jsonify({"Cleared": "playlist"})
 
-@api.route('/np')
+@api.route('/current')
 def np():
     """
     provides the currently playing song
