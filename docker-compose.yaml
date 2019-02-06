@@ -39,7 +39,7 @@ services:
     volumes:
       - ~/songs:/songs
     ports:
-      - "8070:8070"
+      - "8081:8081"
     deploy:
       resources:
         limits:

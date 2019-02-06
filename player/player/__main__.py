@@ -11,6 +11,7 @@ app = Bottle()
 def restart():
     if stream.process != None:
         stream.process.terminate()
+    return
 
 def playloop():
     if stream.process == None or stream.process.poll() != None:
@@ -21,11 +22,10 @@ def playloop():
             print ("no songs")
 
     sleep(5)
-    print ("hello")
     return playloop()
 
 player = threading.Thread(name='player', target=playloop)
 if __name__ == "__main__":
     player.start()
-    run(app, host='localhost', port=8070)
+    run(app, host='localhost', port=8081)
     player.join()
