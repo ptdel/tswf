@@ -31,7 +31,6 @@ def up_next():
     provide a route to pop next song from queue.
 
     """
-    #playlist.current_song = playlist[0]
     votetoskip.reset()
     return jsonify({"Next": playlist.next()})
 
@@ -73,13 +72,11 @@ def skip():
     """
     votes by users to skip currently playing song
     
-    """   
-    if not 'username' in request.args:
-        return jsonify({"Skip": votetoskip.status})
+    """
     if len(playlist) == 0:
         raise MethodNotAllowed
         
-    votetoskip(request.args.get('username'))
+    votetoskip(request.args.get('username'), request.remote_addr)
     return jsonify({"Skip": "200"})
 
 @api.teardown_app_request

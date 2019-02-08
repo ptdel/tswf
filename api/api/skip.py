@@ -2,15 +2,14 @@ from requests import get
 from errors import Unauthorized, MethodNotAllowed
 
 class Skip(list):
-    
-    status = False
-    votecount = 0
 
     def __init__(self):
-        self.status == False
         self.votecount = 0
+        self.ip_whitelist = ["91.121.85.213"]
         
-    def __call__(self, username):
+    def __call__(self, username, remote_ip):
+        if not remote_ip in self.ip_whitelist:
+            raise Unauthorized
         if username is not None:
             for x in self:
                 if x == username:
@@ -22,7 +21,6 @@ class Skip(list):
                 get("https://127.0.0.1:8081/restart", verify=False)
                 
     def reset(self):
-        self.status = False
         self.votecount = 0
         self.clear()
             
