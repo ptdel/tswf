@@ -31,9 +31,9 @@ def up_next():
     provide a route to pop next song from queue.
 
     """
-    playlist.current_song = playlist[0]
+    #playlist.current_song = playlist[0]
     votetoskip.reset()
-    return jsonify({"Next": playlist.pop()})
+    return jsonify({"Next": playlist.next()})
 
 @api.route("/stat")
 def stat():
