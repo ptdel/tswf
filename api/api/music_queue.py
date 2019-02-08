@@ -10,7 +10,7 @@ class PlayList(deque):
             self.appendleft(song)
             
     def next(self):
-        self.current_song = self[0]
-        return self.pop()
+        self.current_song = self.pop()
+        return self.current_song
             
 playlist = PlayList()
