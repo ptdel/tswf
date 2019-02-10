@@ -10,7 +10,7 @@ class Skip(list):
     def __call__(self, username, remote_ip):
         if not remote_ip in self.ip_whitelist:
             raise Unauthorized
-        if username is not None:
+        if username != None:
             for x in self:
                 if x == username:
                     raise Unauthorized

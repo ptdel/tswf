@@ -73,8 +73,6 @@ def skip():
     votes by users to skip currently playing song
     
     """
-    if playlist.current_song == None:
-        raise MethodNotAllowed
         
     votetoskip(request.args.get('username'), request.remote_addr)
     return jsonify({"Skip": "200"})

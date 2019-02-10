@@ -100,6 +100,7 @@ Authors
 -------
 
 * [Patrick Delaney](https://github.com/ptdel)
+* [Powtrak](https://github.com/powtrak)
 
 License
 -------
