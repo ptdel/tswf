@@ -5,7 +5,7 @@ class Skip(list):
 
     def __init__(self):
         self.votecount = 0
-        self.ip_whitelist = ["91.121.85.213"]
+        self.ip_whitelist = ["127.0.0.1"]
         
     def __call__(self, username, remote_ip):
         if not remote_ip in self.ip_whitelist:
@@ -18,7 +18,7 @@ class Skip(list):
             self.votecount += 1
             
             if self.votecount >= 4:
-                get("https://127.0.0.1:8081/restart", verify=False)
+                get("http://127.0.0.1:8081/restart", verify=False)
                 
     def reset(self):
         self.votecount = 0

@@ -73,7 +73,7 @@ def skip():
     votes by users to skip currently playing song
     
     """
-    if len(playlist) == 0:
+    if playlist.current_song == None:
         raise MethodNotAllowed
         
     votetoskip(request.args.get('username'), request.remote_addr)

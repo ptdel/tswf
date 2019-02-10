@@ -1,6 +1,6 @@
 from time import sleep
 import threading
-from bottle import Bottle, run
+from bottle import Bottle, run, request, HTTPResponse
 from ydl import ydl
 from requests import get
 from player import stream
@@ -9,9 +9,12 @@ app = Bottle()
 
 @app.route('/restart')
 def restart():
+    client_ip = request.environ.get('REMOTE_ADDR')
+    if client_ip != "127.0.0.1":
+        return HTTPResponse(status=403)
     if stream.process != None:
         stream.process.terminate()
-    return
+        return
 
 def playloop():
     if stream.process == None or stream.process.poll() != None:
