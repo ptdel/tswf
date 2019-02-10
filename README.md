@@ -21,9 +21,11 @@ The API is simple, with more functionality on the way as time permits.
 ```
 /submit?song=<urlencoded song link> <-  submit a song to the queue
 /stat                               <-  the length of the queue
-/queue                              <-	 the queue
+/queue                              <-	the queue
 /clear                              <-  in case of emergencies
 /next                               <-  used by player (and assholes)
+/current                            <-  currently playing URL
+/skip?username=<username>           <-  Vote to skip song
 ```
 
 Getting Started
@@ -98,6 +100,7 @@ Authors
 -------
 
 * [Patrick Delaney](https://github.com/ptdel)
+* [Powtrak](https://github.com/powtrak)
 
 License
 -------

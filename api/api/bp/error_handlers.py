@@ -3,7 +3,6 @@ from werkzeug.exceptions import HTTPException
 
 error_handlers = Blueprint("error_handlers", __name__)
 
-
 @error_handlers.app_errorhandler(HTTPException)
 def http_error_handler(error):
     return (
@@ -18,7 +17,6 @@ def http_error_handler(error):
         ),
         error.code,
     )
-
 
 @error_handlers.app_errorhandler(Exception)
 def unexpected_error_handler(error):
