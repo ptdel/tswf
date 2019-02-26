@@ -21,7 +21,10 @@ def playloop():
         if stream.process == None or stream.process.poll() != None:
             next_song = get("https://127.0.0.1/api/next", verify=False)
             if "Next" in next_song.json():
-                ydl.download([next_song.json()["Next"]])
+                try:
+                    ydl.download([next_song.json()["Next"]])
+                except:
+                    print ("Youtube-dl encountered and error downloading")
             else:
                 print ("no songs")
 
