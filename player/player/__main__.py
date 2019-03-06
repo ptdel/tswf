@@ -24,7 +24,7 @@ def playloop():
                 try:
                     ydl.download([next_song.json()["Next"]])
                 except:
-                    print ("Youtube-dl encountered and error downloading")
+                    print ("Youtube-dl encountered and error downloading", next_song.json())
             else:
                 print ("no songs")
 
