@@ -17,15 +17,18 @@ def restart():
         return
 
 def playloop():
-    if stream.process == None or stream.process.poll() != None:
-        next_song = get("https://127.0.0.1/api/next", verify=False)
-        if "Next" in next_song.json():
-            ydl.download([next_song.json()["Next"]])
-        else:
-            print ("no songs")
+    while True:
+        if stream.process == None or stream.process.poll() != None:
+            next_song = get("https://127.0.0.1/api/next", verify=False)
+            if "Next" in next_song.json():
+                try:
+                    ydl.download([next_song.json()["Next"]])
+                except:
+                    print ("Youtube-dl encountered and error downloading", next_song.json())
+            else:
+                print ("no songs")
 
-    sleep(5)
-    return playloop()
+        sleep(5)
 
 player = threading.Thread(name='player', target=playloop)
 if __name__ == "__main__":
