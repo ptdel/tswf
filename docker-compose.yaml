@@ -20,6 +20,8 @@ services:
     image: nginx:latest
     restart: always
     network_mode: "host"
+    volumes:
+      - /usr/share/html:/usr/share/html
     deploy:
       resources:
         limits:
