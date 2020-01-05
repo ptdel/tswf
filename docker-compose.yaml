@@ -20,6 +20,8 @@ services:
     image: nginx:latest
     restart: always
     network_mode: "host"
+    volumes:
+      - /usr/share/html:/usr/share/html
     deploy:
       resources:
         limits:
@@ -38,6 +40,8 @@ services:
     network_mode: "host"
     volumes:
       - ~/songs:/songs
+    ports:
+      - "8081:8081"
     deploy:
       resources:
         limits:
@@ -46,4 +50,3 @@ services:
         reservations:
           cpus: '1.0'
           memory: 512M
-    

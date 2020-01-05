@@ -10,5 +10,5 @@ app.config.from_object(Settings)
 app.register_blueprint(error_handlers)
 app.register_blueprint(api)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=True)

@@ -11,7 +11,8 @@ RUN apk add --no-cache \
     libffi-dev  \
     python-dev  \
     openssl-dev \
-    ffmpeg
+    ffmpeg \
+    git
 
 RUN pip install --no-cache-dir -r requirements.txt
 
