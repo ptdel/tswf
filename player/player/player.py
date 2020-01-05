@@ -10,7 +10,7 @@ class Stream:
     def stream_song(self, song):
         self.process = (
                     ffmpeg
-                    .input(song, re=None)
+                    .input(song, re=None, vn=None)
                     .output(
                         "rtmp://127.0.0.1:1935/tswf",
                         preset="fast",
