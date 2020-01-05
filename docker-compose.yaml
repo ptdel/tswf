@@ -16,24 +16,6 @@ services:
           cpus: '0.25'
           memory: 128M
 
-  nginx:
-    image: nginx:latest
-    restart: always
-    network_mode: "host"
-    volumes:
-      - /usr/share/html:/usr/share/html
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 256M
-        reservations:
-          cpus: '0.25'
-          memory: 128M
-    ports:
-      - "443:443"
-      - "1935:1935"
-
   player:
     image: player:latest
     restart: always
