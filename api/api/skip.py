@@ -1,5 +1,5 @@
 from requests import get
-from errors import Unauthorized, MethodNotAllowed
+from errors import Unauthorized
 
 class Skip(list):
 
@@ -18,7 +18,8 @@ class Skip(list):
             self.votecount += 1
             
             if self.votecount >= 4:
-                get("http://127.0.0.1:8081/restart", verify=False)
+                r = get("http://127.0.0.1:8081/restart", verify=False)
+                return r
                 
     def reset(self):
         self.votecount = 0

@@ -1,4 +1,5 @@
 class Logger:
+    """ What logger? """
     def debug(self, msg):
         pass
 
