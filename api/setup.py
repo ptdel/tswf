@@ -3,7 +3,11 @@ from setuptools import setup, find_packages
 
 cwd = os.path.abspath(os.path.dirname(__file__))
 
-requires = ["Flask==1.1.1"]
+requires = [
+    "Flask>=1.1.1",
+    "requests>=2.22.0",
+    "httpretty>=0.9.6"
+]
 
 setup(
     name="tswf",
@@ -25,6 +29,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     test_suite="api",
+    setup_requires=["pytest-runner"],
     tests_require=["pytest"],
     install_requires=requires,
 )

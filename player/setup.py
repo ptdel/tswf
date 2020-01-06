@@ -3,7 +3,13 @@ from setuptools import setup, find_packages
 
 cwd = os.path.abspath(os.path.dirname(__file__))
 
-requires = ["PyAudio>=0.2.11", "python-librtmp>=0.3.0"]
+requires = [
+    "PyAudio>=0.2.11",
+    "python-librtmp>=0.3.0",
+    "ffmpeg>=1.4",
+    "bottle>=0.12.18",
+    "boddle>=0.2.8",
+    ]
 
 setup(
     name="tswf",
@@ -25,6 +31,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     test_suite="player",
+    setup_requires=["pytest-runner"],
     tests_require=["pytest"],
     install_requires=requires,
 )

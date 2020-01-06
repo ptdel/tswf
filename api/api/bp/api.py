@@ -6,9 +6,8 @@ utilized by the player container.
 
 """
 from flask import Blueprint, jsonify, request
-from requests import get
 from music_queue import playlist
-from errors import InternalError, BadRequest, MethodNotAllowed
+from errors import BadRequest, MethodNotAllowed
 from skip import votetoskip
 
 api = Blueprint("api", __name__, url_prefix="/api")
@@ -20,7 +19,7 @@ def submit():
 
     """
     if not "song" in request.args:
-        raise InternalError
+        raise BadRequest
     song = request.args.get("song")
     playlist(song)
     return jsonify({"Added": song})

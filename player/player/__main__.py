@@ -14,7 +14,7 @@ def restart():
         return HTTPResponse(status=403)
     if stream.process != None:
         stream.process.terminate()
-        return
+        return HTTPResponse(status=200)
 
 def playloop():
     while True:
@@ -31,6 +31,7 @@ def playloop():
         sleep(5)
 
 player = threading.Thread(name='player', target=playloop)
+
 if __name__ == "__main__":
     player.start()
     run(app, host='localhost', port=8081)

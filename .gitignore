@@ -1,1 +1,7 @@
 .vscode/
+.coverage
+crime
+__pycache__/
+*.pyc
+.eggs/
+*.egg-info/
