@@ -1,6 +1,5 @@
 from player import stream
-from os import remove
 
-def download_hook(d):
-    if d["status"] == "finished":
-        stream.stream_song(d["filename"])
+def download_hook(data, stream=stream):
+    if data["status"] == "finished":
+        stream.stream_song(data["filename"])

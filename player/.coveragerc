@@ -1,0 +1,2 @@
+[run]
+omit = player/__main__.py
